@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      userid: {
+      userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
@@ -24,6 +24,11 @@ module.exports = {
         allowNull: false,
         values: [BOOKED, CANCELLED, INITIATED, PENDING],
         defaultValue: INITIATED,
+      },
+      noOfSeats: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 1,
       },
       totalCost: {
         type: Sequelize.INTEGER,
