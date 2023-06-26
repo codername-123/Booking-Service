@@ -11,7 +11,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      flightid: {
+      flightId: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
