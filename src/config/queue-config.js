@@ -1,0 +1,26 @@
+const amqp = require("amqplib");
+
+let connection, channel;
+async function connectQueue() {
+  try {
+    connection = await amqp.connect("amqp://localhost");
+    channel = await connection.createChannel();
+    await channel.assertQueue("noti-queue");
+    console.log("Queue Connected");
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function sendData(data) {
+  try {
+    await channel.sendToQueue("noti-queue", Buffer.from(JSON.stringify(data)));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+module.exports = {
+  connectQueue,
+  sendData,
+};
